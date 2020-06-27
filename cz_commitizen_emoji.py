@@ -29,50 +29,50 @@ class CommitizenEmojiCz(BaseCommitizen):
                 "message": "Select the type of change you are committing",
                 "choices": [
                     {
-                        "value": "fix 🐛",
-                        "name": "fix 🐛: A bug fix. Correlates with PATCH in SemVer",
+                        "value": "🐛 fix",
+                        "name": "🐛 fix: A bug fix",
                     },
                     {
-                        "value": "feat 🧮",
-                        "name": "feat 🧮: A new feature. Correlates with MINOR in SemVer",
+                        "value": "🎉 feat",
+                        "name": "🎉 feat: A new feature",
                     },
-                    {"value": "docs 🗒️", "name": "docs 🗒️: Documentation only changes"},
+                    {"value": "🗒️ docs", "name": "🗒️ docs: Documentation only changes"},
                     {
-                        "value": "style 😎",
+                        "value": "😎 style",
                         "name": (
-                            "style 😎: Changes that do not affect the "
+                            "😎 style: Changes that do not affect the "
                             "meaning of the code (white-space, formatting,"
                             " missing semi-colons, etc)"
                         ),
                     },
                     {
-                        "value": "refactor 🛠️",
+                        "value": "🛠️ refactor",
                         "name": (
-                            "refactor 🛠️: A code change that neither fixes "
+                            "🛠️ refactor: A code change that neither fixes "
                             "a bug nor adds a feature"
                         ),
                     },
                     {
-                        "value": "perf 🚀",
-                        "name": "perf 🚀: A code change that improves performance",
+                        "value": "🚀 perf",
+                        "name": "🚀 perf: A code change that improves performance",
                     },
                     {
-                        "value": "test 🧪",
+                        "value": "🧪 test",
                         "name": (
-                            "test 🧪: Adding missing or correcting " "existing tests"
+                            "🧪 test: Adding missing or correcting " "existing tests"
                         ),
                     },
                     {
-                        "value": "build 🏗️",
+                        "value": "🏗️ build",
                         "name": (
-                            "build 🏗️: Changes that affect the build system or "
+                            "🏗️ build: Changes that affect the build system or "
                             "external dependencies (example scopes: pip, docker, npm)"
                         ),
                     },
                     {
-                        "value": "ci 🛸",
+                        "value": "🛸 ci",
                         "name": (
-                            "ci 🛸: Changes to our CI configuration files and "
+                            "🛸 ci: Changes to our CI configuration files and "
                             "scripts (example scopes: GitLabCI)"
                         ),
                     },
@@ -111,14 +111,6 @@ class CommitizenEmojiCz(BaseCommitizen):
                 ),
                 "filter": multiple_line_breaker,
             },
-            {
-                "type": "input",
-                "name": "footer",
-                "message": (
-                    "Footer. Information about Breaking Changes and "
-                    "reference issues that this commit closes:\n"
-                ),
-            },
         ]
         return questions
 
@@ -127,7 +119,6 @@ class CommitizenEmojiCz(BaseCommitizen):
         scope = answers["scope"]
         subject = answers["subject"]
         body = answers["body"]
-        footer = answers["footer"]
         is_breaking_change = answers["is_breaking_change"]
 
         if scope:
@@ -136,10 +127,8 @@ class CommitizenEmojiCz(BaseCommitizen):
             body = f"BREAKING CHANGE 🚨: {body}"
         if body:
             body = f"\n\n{body}"
-        if footer:
-            footer = f"\n\n{footer}"
 
-        message = f"{prefix}{scope}: {subject}{body}{footer}"
+        message = f"{prefix}{scope}: {subject}{body}"
 
         return message
 
