@@ -36,7 +36,7 @@ class CommitizenEmojiCz(BaseCommitizen):
                         "value": "🎉 feat",
                         "name": "🎉 feat: A new feature",
                     },
-                    {"value": "🗒️ docs", "name": "🗒️ docs: Documentation only changes"},
+                    {"value": "📜 docs", "name": "📜 docs: Documentation only changes"},
                     {
                         "value": "😎 style",
                         "name": (
@@ -46,9 +46,9 @@ class CommitizenEmojiCz(BaseCommitizen):
                         ),
                     },
                     {
-                        "value": "🛠️ refactor",
+                        "value": "🔧 refactor",
                         "name": (
-                            "🛠️ refactor: A code change that neither fixes "
+                            "🔧 refactor: A code change that neither fixes "
                             "a bug nor adds a feature"
                         ),
                     },
@@ -57,15 +57,15 @@ class CommitizenEmojiCz(BaseCommitizen):
                         "name": "🚀 perf: A code change that improves performance",
                     },
                     {
-                        "value": "🧪 test",
+                        "value": "🚦 test",
                         "name": (
-                            "🧪 test: Adding missing or correcting " "existing tests"
+                            "🚦 test: Adding missing or correcting " "existing tests"
                         ),
                     },
                     {
-                        "value": "🏗️ build",
+                        "value": "🚧 build",
                         "name": (
-                            "🏗️ build: Changes that affect the build system or "
+                            "🚧 build: Changes that affect the build system or "
                             "external dependencies (example scopes: pip, docker, npm)"
                         ),
                     },
