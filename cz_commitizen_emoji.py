@@ -146,12 +146,12 @@ class CommitizenEmojiCz(BaseCommitizen):
         if time:
             extra += f" >>> {time}"
         if tasks:
-            tasks_text = ' '.join([f'#{task_id}' for task_id in tasks.split()]
+            tasks_text = ' '.join([f'#{task_id}' for task_id in tasks.split()])
             extra += f" >>> Tasks: {tasks_text}"
 
-        message=f"{prefix}{scope}: {subject}{extra}{body}"
+        message = f"{prefix}{scope}: {subject}{extra}{body}"
 
         return message
 
 
-discover_this=CommitizenEmojiCz
+discover_this = CommitizenEmojiCz
