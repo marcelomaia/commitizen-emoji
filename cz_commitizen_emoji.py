@@ -110,7 +110,7 @@ class CommitizenEmojiCz(BaseCommitizen):
             },
             {
                 "type": "confirm",
-                "message": "Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer",
+                "message": "Is this a BREAKING CHANGE?",
                 "name": "is_breaking_change",
                 "default": False,
             },
@@ -144,14 +144,14 @@ class CommitizenEmojiCz(BaseCommitizen):
             body = f"\n\n{body}"
 
         if time:
-            extra += time
+            extra += f" >>> {time}"
         if tasks:
-            extra += 'Tasks: ' + \
-                ' '.join([f'#{task_id}' for task_id in tasks.split()])
+            tasks_text = ' '.join([f'#{task_id}' for task_id in tasks.split()]
+            extra += f" >>> Tasks: {tasks_text}"
 
-        message = f"{prefix}{scope}: {extra}{subject}{body}"
+        message=f"{prefix}{scope}: {subject}{extra}{body}"
 
         return message
 
 
-discover_this = CommitizenEmojiCz
+discover_this=CommitizenEmojiCz
