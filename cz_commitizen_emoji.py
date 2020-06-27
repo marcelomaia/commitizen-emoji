@@ -97,6 +97,18 @@ class CommitizenEmojiCz(BaseCommitizen):
                 ),
             },
             {
+                "type": "input",
+                "name": "time",
+                "message": "Time spent (i.e. 3h 15m) (optional):\n",
+                "filter": lambda x: "⏰ " + x.strip() if x else "",
+            },
+            {
+                "type": "input",
+                "name": "tasks",
+                "message": "Tasks ID(s) separated by spaces (optional):\n",
+                "filter": lambda x: x.strip() if x else "",
+            },
+            {
                 "type": "confirm",
                 "message": "Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer",
                 "name": "is_breaking_change",
@@ -120,6 +132,9 @@ class CommitizenEmojiCz(BaseCommitizen):
         subject = answers["subject"]
         body = answers["body"]
         is_breaking_change = answers["is_breaking_change"]
+        time = answers["time"]
+        tasks = answers["tasks"]
+        extra = ''
 
         if scope:
             scope = f"({scope})"
@@ -128,7 +143,13 @@ class CommitizenEmojiCz(BaseCommitizen):
         if body:
             body = f"\n\n{body}"
 
-        message = f"{prefix}{scope}: {subject}{body}"
+        if time:
+            extra += time
+        if tasks:
+            extra += 'Tasks: ' + \
+                ' '.join([f'#{task_id}' for task_id in tasks.split()])
+
+        message = f"{prefix}{scope}: {extra}{subject}{body}"
 
         return message
 

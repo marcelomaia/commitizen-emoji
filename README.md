@@ -1,6 +1,6 @@
 # commitizen-emoji
 
-![Console print](img/print.png)
+![Console print](img/console.gif)
 
 ## What is it
 

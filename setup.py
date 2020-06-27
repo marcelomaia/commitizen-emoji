@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="commitizen_emoji",
-    version="0.1.1",
+    version="0.1.2",
     py_modules=["cz_commitizen_emoji"],
     license="MIT",
     long_description="Commitizen with emojis!",
