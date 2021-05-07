@@ -1,5 +1,8 @@
+from collections import OrderedDict
+
 from commitizen.cz.base import BaseCommitizen
 from commitizen.cz.utils import multiple_line_breaker, required_validator
+from commitizen.defaults import MAJOR, MINOR, PATCH
 
 
 def parse_scope(text):
@@ -21,6 +24,18 @@ def parse_subject(text):
 
 
 class CommitizenEmojiCz(BaseCommitizen):
+    bump_pattern = r"^(BREAKING[\-\ ]CHANGE|🎉 feat|🐛 fix|🔧 refactor|🚀 perf)(\(.+\))?(!)?"
+    bump_map = OrderedDict(
+        (
+            (r"^.+!$", MAJOR),
+            (r"^BREAKING[\-\ ]CHANGE", MAJOR),
+            (r"^🎉 feat", MINOR),
+            (r"^🐛 fix", PATCH),
+            (r"^🔧 refactor", PATCH),
+            (r"^🚀 perf", PATCH),
+        )
+    )
+    
     def questions(self) -> list:
         questions: List[Dict[str, Any]] = [
             {
