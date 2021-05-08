@@ -24,15 +24,15 @@ def parse_subject(text):
 
 
 class CommitizenEmojiCz(BaseCommitizen):
-    bump_pattern = r"^(BREAKING[\-\ ]CHANGE|🎉 feat|🐛 fix|🔧 refactor|🚀 perf)(\(.+\))?(!)?"
+    bump_pattern = r"^(BREAKING[\-\ ]CHANGE|🎉? ?feat|🐛? ?fix|🔧? ?refactor|🚀? ?perf)(\(.+\))?(!)?"
     bump_map = OrderedDict(
         (
             (r"^.+!$", MAJOR),
             (r"^BREAKING[\-\ ]CHANGE", MAJOR),
-            (r"^🎉 feat", MINOR),
-            (r"^🐛 fix", PATCH),
-            (r"^🔧 refactor", PATCH),
-            (r"^🚀 perf", PATCH),
+            (r"^🎉? ?feat", MINOR),
+            (r"^🐛? ?fix", PATCH),
+            (r"^🔧? ?refactor", PATCH),
+            (r"^🚀? ?perf", PATCH),
         )
     )
     
